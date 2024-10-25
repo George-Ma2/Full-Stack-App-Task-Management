@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const pool = require("./db")
+const pool = require("./db");
 const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
@@ -13,7 +13,7 @@ app.post("/tasks", async(req, res) => {
         const newTask = await pool.query (
             'INSERT INTO tasks (description) VALUES($1) RETURNING *',
             [description]
-        )
+        );
 
     // res.json(newTask.row[1])
     } catch (err) {
@@ -21,5 +21,17 @@ app.post("/tasks", async(req, res) => {
     }
 });
 
+
+//Get all tasks
+app.get("/tasks", async(req, res) => {
+    try {
+        const allTasks = await pool.query (
+            "SELECT * FROM tasks"
+        );
+        res.json(allTasks.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
