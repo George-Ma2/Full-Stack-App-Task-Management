@@ -49,4 +49,20 @@ app.get("/tasks/:id", async (req, res) => {
     }
 })
 
+
+//Update a task
+app.put("/tasks/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { description } = req.body;
+        const updateTask = await pool.query (
+            "UPDATE tasks SET description = $1 WHERE task_id = $2",
+            [description, id]
+        );
+        res.json("Task updated");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
