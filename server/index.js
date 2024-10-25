@@ -65,4 +65,20 @@ app.put("/tasks/:id", async (req, res) => {
     }
 });
 
+
+//Delete a task
+app.delete("/tasks/:id", async (req, res) =>{
+    try {
+        const { id } = req.params;
+        const deleteTask = await pool.query (
+            "DELETE FROM tasks WHERE task_id = $1",
+            [id]
+        );
+        res.json("Task deleted");
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
