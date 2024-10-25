@@ -47,7 +47,7 @@ app.get("/tasks/:id", async (req, res) => {
     } catch (err) {
         console.error(err.message);
     }
-})
+});
 
 
 //Update a task
@@ -63,6 +63,6 @@ app.put("/tasks/:id", async (req, res) => {
     } catch (err) {
         console.error(err.message);
     }
-})
+});
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
