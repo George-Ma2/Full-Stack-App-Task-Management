@@ -34,4 +34,19 @@ app.get("/tasks", async(req, res) => {
     }
 });
 
+
+//Get a task
+app.get("/tasks/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const task = await pool.query (
+            "SELECT * FROM tasks WHERE task_id = $1",
+            [id]
+        );
+        res.json(task.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
