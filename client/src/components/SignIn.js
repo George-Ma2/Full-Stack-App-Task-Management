@@ -6,6 +6,10 @@ const SignIn = ({ setIsAuthenticated }) => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  const handleSignInRedirect = () => {
+    navigate('/login');
+  };
+
   const handleSignIn = async (event) => {
     event.preventDefault();
     try {
@@ -50,7 +54,12 @@ const SignIn = ({ setIsAuthenticated }) => {
         required 
       />
       <button type="submit">Sign In</button>
-      <p>Already have an account? <a href="/login">Log In</a></p>
+      <p>
+        Don't have an account? 
+        <button type="button" onClick={handleSignInRedirect}>
+          Log In
+        </button>
+      </p>
     </form>
   );
 };
