@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 import InputTask from './InputTask';
 import DeleteTasks from './DeleteTask';
 import EditTask from "./EditTask";
+import LogOut from "./LogOut";
 
-const TaskManager = () => {
+const TaskManager = ({ setIsAuthenticated }) => {
     const [tasks, setTasks] = useState([]);
 
     // Function to fetch tasks
@@ -26,6 +27,7 @@ const TaskManager = () => {
 
     return (
         <>
+            <LogOut setIsAuthenticated={setIsAuthenticated} />
             <InputTask getTasks={getTasks} />
             <DeleteTasks tasks={tasks} getTasks={getTasks} />
         </>

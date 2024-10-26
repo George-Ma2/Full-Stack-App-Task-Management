@@ -7,6 +7,7 @@ import SignIn from './components/SignIn';
 import LogIn from './components/LogIn';
 import TaskManager from './components/TaskManager';
 import ProtectedRoute from './components/ProtectedRoute';
+import LogOut from './components/LogOut';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
