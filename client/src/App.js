@@ -5,7 +5,9 @@ import InputTask from "./components/InputTask";
 
 function App() {
   return (
-    <InputTask/>
+    <div className='container'>
+      <InputTask/>
+    </div>
   );
 }
 

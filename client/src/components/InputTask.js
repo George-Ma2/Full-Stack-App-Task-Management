@@ -1,7 +1,39 @@
 import React from "react";
+import { useState } from "react";
 
 const InputTask = () => {
-    return (<h1>Hello there</h1>)
+
+    const [description, setDescription] = useState("")
+
+    const onSubmitForm = async(e) => {
+        e.preventDefault();
+        try {
+            const body = { description };
+            const response = await fetch("http://localhost:4000/tasks", {
+                method: "POST",
+                headers: { "Content-type": "application/json"},
+                body: JSON.stringify(body)
+            });
+            console.log(response)
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
+
+    return (
+    <>
+        <h1 className="text-center mt-5">Task Management</h1>
+        <form className="d-flex mt-5" onSubmit={onSubmitForm}>
+            <input 
+                className="form-control" 
+                type="text"
+                value={ description }
+                onChange = {e => setDescription(e.target.value)}
+            />
+            <button>Add</button>
+        </form>
+    </>
+)
     
 }
 
