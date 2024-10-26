@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react"
 
+import EditTask from './EditTask';
+
 const ListTasks = () => {
 
     const [tasks, setTasks] = useState([])
+
     const getTasks = async() => {
         try {
 
             const response = await fetch("http://localhost:5000/tasks")
             const jsonData = await response.json();
-
             setTasks(jsonData); 
 
         } catch (err) {
             console.error(err.message)
         }
     }
+
+    useEffect(() => {
+        getTasks();
+    }, []);
+
 
     const deleteTask = async(id) => {
         try {
@@ -29,9 +36,6 @@ const ListTasks = () => {
         }
     }
 
-    useEffect(() => {
-        getTasks();
-    }, []);
 
     return (
         <>
@@ -54,11 +58,11 @@ const ListTasks = () => {
                         tasks.map(task => (
                             <tr key={task.task_id}>
                                 <td>{task.description}</td>
-                                <td><button>Edit</button></td>
+                                <td><EditTask task={task}/></td>
                                 <td>
                                     <button className="btn btn-danger" 
                                         onClick={() => deleteTask (task.task_id)}>
-                                            Delete
+                                            Delete Task
                                     </button>
                                 </td>
                             </tr>

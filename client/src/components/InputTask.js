@@ -30,7 +30,7 @@ const InputTask = () => {
                 value={ description }
                 onChange = {e => setDescription(e.target.value)}
             />
-            <button>Add</button>
+            <button class="btn btn-success">Add</button>
         </form>
     </>
 )
