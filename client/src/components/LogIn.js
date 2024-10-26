@@ -6,6 +6,10 @@ const LogIn = ({ setIsAuthenticated }) => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  const handleSignInRedirect = () => {
+    navigate('/signin');
+  };
+
   const handleLogIn = async (event) => {
     event.preventDefault();
     
@@ -48,7 +52,13 @@ const LogIn = ({ setIsAuthenticated }) => {
         required 
       />
       <button type="submit">Log In</button>
-      <p>Don't have an account? <a href="/signin">Sign In</a></p>
+      <p>
+        Don't have an account? 
+        <button type="button" onClick={handleSignInRedirect}>
+          Sign In
+        </button>
+      </p>
+
     </form>
   );
 };
