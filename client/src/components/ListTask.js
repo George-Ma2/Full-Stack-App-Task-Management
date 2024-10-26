@@ -9,7 +9,7 @@ const ListTasks = () => {
     const getTasks = async() => {
         try {
 
-            const response = await fetch("https://full-stack-app-task-management.onrender.com/tasks")
+            const response = await fetch("http://localhost:5000/tasks")
             const jsonData = await response.json();
             setTasks(jsonData); 
 
@@ -25,7 +25,7 @@ const ListTasks = () => {
 
     const deleteTask = async(id) => {
         try {
-            const deleteTask = await fetch(`https://full-stack-app-task-management.onrender.com/tasks/${id}`, {
+            const deleteTask = await fetch(`http://localhost:5000/tasks/${id}`, {
                 method: "DELETE"
             });
 
