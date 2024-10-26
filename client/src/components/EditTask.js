@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-const EditTask = ({task}) => {
+const EditTask = ({task, getTasks}) => {
     const [description, setDescription] = useState(task.description);
 
     const updateDescription = async(e) => {
@@ -12,7 +12,7 @@ const EditTask = ({task}) => {
                 headers: { "Content-type": "application/json"},
                 body: JSON.stringify(body)
             });
-            window.location = "/";
+            getTasks(); 
         } catch (err) {
             console.error(err.message);
         }
@@ -24,7 +24,7 @@ const EditTask = ({task}) => {
             Edit Task
             </button>
 
-            <div class="modal" id={`id${task.task_id}`} onClick={ () => setDescription(task.description)}>
+            <div class="modal" id={`id${task.task_id}`}>
             <div class="modal-dialog">
                 <div class="modal-content">
 

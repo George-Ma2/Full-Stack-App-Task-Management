@@ -3,8 +3,25 @@ const app = express();
 const cors = require('cors');
 const pool = require("./db");
 const PORT = process.env.PORT || 5000;
+const session = require('express-session'); 
+const authRoutes = require('./auth'); 
+const pg = require('pg');
+const PgSession = require('connect-pg-simple')(session); 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Configure session middleware (adjust options as needed)
+app.use(session({
+    store: new PgSession({ pool: pool}),
+    secret: 'my-secret-key', 
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, 
+}));
+
+// Use the authentication routes
+app.use('/auth', authRoutes);
 
 //create a task
 app.post("/tasks", async(req, res) => {
