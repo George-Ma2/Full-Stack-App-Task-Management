@@ -16,9 +16,9 @@ const validatePassword = (password) => {
     return regex.test(password);
 };
 
-// Example of a protected route
-router.get('/dashboard', isAuthenticated, (req, res) => {
-    res.send(`Welcome to the dashboard, ${req.session.user.username}`);
+// Check authentication status
+router.get('/check', isAuthenticated, (req, res) => {
+    res.status(200).json({ isAuthenticated: true, user: req.session.user });
 });
 
 // User registration route
