@@ -39,8 +39,13 @@ function App() {
           <Route path="/login" element={<LogIn setIsAuthenticated={setIsAuthenticated} />} />
           <Route 
             path="/tasks" 
-            element={<ProtectedRoute element={<TaskManager />} isAuthenticated={isAuthenticated} />} 
+            element={<ProtectedRoute element={<TaskManager setIsAuthenticated={setIsAuthenticated} />} isAuthenticated={isAuthenticated} />} 
           />
+
+          {/* <Route 
+            path="/tasks" 
+            element={<ProtectedRoute element={<TaskManager />} isAuthenticated={isAuthenticated} />} 
+          /> */}
         </Routes>
       </div>
     </Router>
