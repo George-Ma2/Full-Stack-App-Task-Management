@@ -1,15 +1,25 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import InputTask from "./components/InputTask";
-import ListTasks from './components/ListTask';
+
+import Authentication from './components/Authentication';
+import SignIn from './components/SignIn';
+import LogIn from './components/LogIn';
+import TaskManager from './components/TaskManager';
 
 function App() {
   return (
-    <div className='container'>
-      <InputTask/>
-      <ListTasks/>
-    </div>
+    <Router>
+      <div className='container'>
+        <Routes>
+          <Route path="/" element={<Authentication />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/tasks" element={<TaskManager />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const InputTask = () => {
+const InputTask = ({ getTasks }) => {
 
     const [description, setDescription] = useState("")
 
@@ -14,7 +14,8 @@ const InputTask = () => {
                 headers: { "Content-type": "application/json"},
                 body: JSON.stringify(body)
             });
-            window.location = "/";
+            setDescription("");
+            getTasks();
         } catch (err) {
             console.error(err.message);
         }

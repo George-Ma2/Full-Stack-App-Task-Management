@@ -1,36 +1,13 @@
-import React, { useEffect, useState } from "react"
-
 import EditTask from './EditTask';
 
-const ListTasks = () => {
-
-    const [tasks, setTasks] = useState([])
-
-    const getTasks = async() => {
-        try {
-
-            const response = await fetch("http://localhost:5000/tasks")
-            const jsonData = await response.json();
-            setTasks(jsonData); 
-
-        } catch (err) {
-            console.error(err.message)
-        }
-    }
-
-    useEffect(() => {
-        getTasks();
-    }, []);
-
+const ListTasks = ({ tasks, getTasks }) => {
 
     const deleteTask = async(id) => {
         try {
             const deleteTask = await fetch(`http://localhost:5000/tasks/${id}`, {
                 method: "DELETE"
             });
-
-            setTasks(tasks.filter(task => task.task_id !== id))
-
+            getTasks();
         } catch (err) {
             console.error(err.message);
         }
@@ -48,17 +25,11 @@ const ListTasks = () => {
                     </tr>
                 </thead>
                 <tbody>
-
-                    {/* <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                    </tr> */}
                     {
                         tasks.map(task => (
                             <tr key={task.task_id}>
                                 <td>{task.description}</td>
-                                <td><EditTask task={task}/></td>
+                                <td><EditTask task={task} getTasks={getTasks}/></td>
                                 <td>
                                     <button className="btn btn-danger" 
                                         onClick={() => deleteTask (task.task_id)}>
