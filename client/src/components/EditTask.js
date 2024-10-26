@@ -39,7 +39,7 @@ const EditTask = ({task}) => {
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal" onClick={e => updateDescription(e)}>Edit</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" onClick={e => updateDescription(e)}>Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onClick={() => setDescription(task.description)}>Close</button>
                 </div>
 
                 </div>
