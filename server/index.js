@@ -15,7 +15,7 @@ app.post("/tasks", async(req, res) => {
             [description]
         );
 
-    // res.json(newTask.row[1])
+    res.json(newTask.rows[0])
     } catch (err) {
         console.error(err.message);
     }
