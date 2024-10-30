@@ -9,7 +9,7 @@ const InputTask = ({ getTasks }) => {
         e.preventDefault();
         try {
             const body = { description };
-            const response = await fetch("http://localhost:5000/tasks", {
+            const response = await fetch("https://full-stack-app-task-management.onrender.com/tasks", {
                 method: "POST",
                 headers: { "Content-type": "application/json"},
                 body: JSON.stringify(body)

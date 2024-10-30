@@ -12,7 +12,7 @@ const TaskManager = ({ setIsAuthenticated }) => {
     // Function to fetch tasks
     const getTasks = async () => {
         try {
-            const response = await fetch("http://localhost:5000/tasks");
+            const response = await fetch("https://full-stack-app-task-management.onrender.com/tasks");
             const jsonData = await response.json();
             setTasks(jsonData);
         } catch (err) {

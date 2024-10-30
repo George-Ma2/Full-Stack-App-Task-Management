@@ -14,7 +14,7 @@ function App() {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await fetch('http://localhost:5000/auth/check'); 
+      const response = await fetch('https://full-stack-app-task-management.onrender.com/auth/check'); 
       if (response.ok) {
         setIsAuthenticated(true);
       } else {

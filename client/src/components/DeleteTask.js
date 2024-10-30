@@ -4,7 +4,7 @@ const ListTasks = ({ tasks, getTasks }) => {
 
     const deleteTask = async(id) => {
         try {
-            const deleteTask = await fetch(`http://localhost:5000/tasks/${id}`, {
+            const deleteTask = await fetch(`https://full-stack-app-task-management.onrender.com/tasks/${id}`, {
                 method: "DELETE"
             });
             getTasks();

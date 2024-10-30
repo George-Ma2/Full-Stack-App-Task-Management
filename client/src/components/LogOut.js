@@ -3,7 +3,7 @@ import React from 'react';
 const LogOut = ({ setIsAuthenticated }) => {
   const handleLogOut = async () => {
     try {
-      const response = await fetch('http://localhost:5000/auth/logout', {
+      const response = await fetch('https://full-stack-app-task-management.onrender.com/auth/logout', {
         method: 'POST'
       });
 
